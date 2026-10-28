@@ -1,6 +1,6 @@
 ---
 name: aws-knowledge-mcp-setup
-description: Connect AWS Knowledge MCP to Codex, Kiro, or Claude Code and verify official documentation search. Explain the setup in American English. Do not sign in to AWS or operate account resources.
+description: Connect AWS Knowledge MCP to Codex, Kiro, or Claude Code and verify official documentation search. Explain the setup in English. Do not sign in to AWS or operate account resources.
 ---
 
 # Connect AWS Knowledge MCP

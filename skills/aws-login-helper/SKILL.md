@@ -1,11 +1,11 @@
 ---
 name: aws-login-helper
-description: Check an existing AWS CLI profile, authenticate again only when its session has expired, and start AWS MCP. Explain the workflow in American English. Do not migrate SSO or change authentication methods.
+description: Check an existing AWS CLI profile, authenticate again only when its session has expired, and start AWS MCP. Explain the workflow in English. Do not migrate SSO or change authentication methods.
 ---
 
 # AWS Login Helper
 
-Explain the purpose and scope in American English. Ask only for the profile name, workload Region, operating system, and agent. Never ask for credentials or access to someone else's AWS account.
+Explain the purpose and scope in English. Ask only for the profile name, workload Region, operating system, and agent. Never ask for credentials or access to someone else's AWS account.
 
 ## Preserve the existing setup
 

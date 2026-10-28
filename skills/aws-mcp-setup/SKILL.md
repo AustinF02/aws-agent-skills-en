@@ -1,6 +1,6 @@
 ---
 name: aws-mcp-setup
-description: Connect the official AWS MCP server to Codex, Kiro, or Claude Code using an existing named profile, then verify authentication and tool discovery. Explain the setup in American English without changing AWS resources or IAM permissions.
+description: Connect the official AWS MCP server to Codex, Kiro, or Claude Code using an existing named profile, then verify authentication and tool discovery. Explain the setup in English without changing AWS resources or IAM permissions.
 ---
 
 # Set Up and Connect AWS MCP

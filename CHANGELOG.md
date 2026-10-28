@@ -6,7 +6,7 @@ User-visible changes are recorded here. Unreleased entries describe changes on t
 
 ### Added
 
-- American English aws-backend-tdd skill with a compact core and on-demand testing, IAM/IaC, and real-AWS references.
+- English aws-backend-tdd skill with a compact core and on-demand testing, IAM/IaC, and real-AWS references.
 - README routing example, portability and safety caveats, and contribution guidance.
 
 ### Changed

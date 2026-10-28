@@ -1,4 +1,4 @@
-# AWS Agent Skills — American English
+# AWS Agent Skills — English
 
 **Set up AWS authentication, MCP connections, and Agent Toolkit, and develop AWS backends with behavior-first tests in Codex, Kiro, or Claude Code.**
 
@@ -150,7 +150,7 @@ These tests do **not** verify real browser/MFA flows, macOS Terminal permissions
 python -m unittest discover -s tests -v
 ```
 
-The setup skills translate the [original Japanese source](https://github.com/AustinF02/aws-agent-skills-ja/tree/86c909dc63916ae1a45f58ae244fc64fc0c0bce7); aws-backend-tdd adapts the [Japanese TDD edition](https://github.com/AustinF02/aws-agent-skills-ja/tree/cea1c82be73dca543d312d36b2a6f85a3c45fb7e/skills/aws-backend-tdd). The launcher logic is preserved; user-facing messages and instructions use American English. The Japanese repository retains the original test-first failure and subsequent passing runs. This repository records regression checks for the English edition.
+The setup skills translate the [original Japanese source](https://github.com/AustinF02/aws-agent-skills-ja/tree/86c909dc63916ae1a45f58ae244fc64fc0c0bce7); aws-backend-tdd adapts the [Japanese TDD edition](https://github.com/AustinF02/aws-agent-skills-ja/tree/cea1c82be73dca543d312d36b2a6f85a3c45fb7e/skills/aws-backend-tdd). The launcher logic is preserved; user-facing messages and instructions use English. The Japanese repository retains the original test-first failure and subsequent passing runs. This repository records regression checks for the English edition.
 
 ## Development guidelines
 

@@ -1,6 +1,6 @@
 ---
 name: aws-agent-toolkit-setup
-description: Follow AWS's official setup.md to install Agent Toolkit while preserving existing configuration, then check authentication, skills, and MCP for Codex, Kiro, or Claude Code. Explain the workflow in American English.
+description: Follow AWS's official setup.md to install Agent Toolkit while preserving existing configuration, then check authentication, skills, and MCP for Codex, Kiro, or Claude Code. Explain the workflow in English.
 ---
 
 # Set Up Agent Toolkit for AWS
