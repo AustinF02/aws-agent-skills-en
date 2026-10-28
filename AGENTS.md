@@ -8,7 +8,7 @@
 
 ## Choosing skills
 
-- Use the installed tdd and ponytail skills when adding or changing behavior.
+- Use aws-backend-tdd and the installed ponytail skill when adding or changing AWS infrastructure or backend behavior. Do not force aws-backend-tdd onto unrelated work.
 - Use caveman's concise style for progress and completion reports.
 - Read the applicable SKILL.md before using a skill. Report a missing skill rather than installing it without authorization.
 - Do not copy external skill instructions into this file.

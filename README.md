@@ -1,6 +1,6 @@
 # AWS Agent Skills — American English
 
-**Set up AWS authentication, MCP connections, and Agent Toolkit with Codex, Kiro, or Claude Code.**
+**Set up AWS authentication, MCP connections, and Agent Toolkit, and develop AWS backends with behavior-first tests in Codex, Kiro, or Claude Code.**
 
 This skillset helps when you are unsure which configuration to edit, AWS MCP will not connect, or an expired login interrupts your work. It checks your existing setup before making changes and uses your own AWS account. It does not include the author's credentials or machine configuration.
 
@@ -16,6 +16,7 @@ This skillset helps when you are unsure which configuration to edit, AWS MCP wil
 | [aws-login-helper](skills/aws-login-helper/SKILL.md) | Check session expiration, authenticate only when needed, and start AWS MCP | Required |
 | [aws-mcp-setup](skills/aws-mcp-setup/SKILL.md) | Connect and troubleshoot the official AWS MCP server | Required |
 | [aws-agent-toolkit-setup](skills/aws-agent-toolkit-setup/SKILL.md) | Follow AWS's official Toolkit setup and verify skills and MCP | Required |
+| [aws-backend-tdd](skills/aws-backend-tdd/SKILL.md) | Test AWS infrastructure and backend behavior using separate test tiers | Only for real-AWS verification |
 
 Start with Knowledge MCP if you only need documentation. You do not need an AWS account or AWS CLI for that connection. Add authenticated AWS MCP when you need to work with account resources.
 
@@ -74,6 +75,26 @@ In Claude Code, install the folder and start a new session, then use `/aws-knowl
 
 Installing a skill and configuring its MCP connection are separate steps. The skill checks your environment and guides the connection setup.
 
+## AWS backend TDD: a small example
+
+After installing the complete `aws-backend-tdd` folder, ask your agent:
+
+```text
+Use aws-backend-tdd. The item-ID validator currently accepts an empty string.
+Change it to raise ValueError. Keep this change at the unit tier; do not call AWS.
+```
+
+**Before:** an empty ID passes validation. **After:** it raises `ValueError`.
+
+1. Read the core skill, identify the validation boundary, and choose the unit tier.
+2. Open only [testing.md](skills/aws-backend-tdd/references/testing.md) for this change.
+3. RED: run a test expecting `ValueError`; confirm it fails because the exception was not raised.
+4. GREEN: add the smallest validation, rerun, then check affected tests. Refactor only if needed.
+
+No IAM/IaC or real-AWS reference is needed for this example. The skill loads details on demand; relative reference paths resolve from the installed skill directory. Agents need file-reading access to those supporting files. A pasted SKILL.md alone is incomplete.
+
+**This skill provides guidance, not an enforced safety control. You are responsible for operations run against your AWS account.** It does not grant permissions, sandbox commands, or guarantee safety. Check service behavior, limits, IAM actions, and regional availability against current official AWS documentation.
+
 ## How the login helper works
 
 The bundled script uses only the Python standard library. Authentication uses AWS CLI; starting MCP uses uvx and the official AWS proxy. It requires AWS CLI v2.32+ and Python 3.11+.
@@ -129,7 +150,7 @@ These tests do **not** verify real browser/MFA flows, macOS Terminal permissions
 python -m unittest discover -s tests -v
 ```
 
-This edition translates the [Japanese source](https://github.com/AustinF02/aws-agent-skills-ja/tree/86c909dc63916ae1a45f58ae244fc64fc0c0bce7). The launcher logic is preserved; user-facing messages and instructions use American English. The Japanese repository retains the original test-first failure and subsequent passing runs. This repository records regression checks for the English edition.
+The setup skills translate the [original Japanese source](https://github.com/AustinF02/aws-agent-skills-ja/tree/86c909dc63916ae1a45f58ae244fc64fc0c0bce7); aws-backend-tdd adapts the [Japanese TDD edition](https://github.com/AustinF02/aws-agent-skills-ja/tree/cea1c82be73dca543d312d36b2a6f85a3c45fb7e/skills/aws-backend-tdd). The launcher logic is preserved; user-facing messages and instructions use American English. The Japanese repository retains the original test-first failure and subsequent passing runs. This repository records regression checks for the English edition.
 
 ## Development guidelines
 
@@ -141,11 +162,10 @@ To adopt this policy in another project, merge the relevant guidance into its ex
 
 These are links only. Their skill instructions, installers, and hooks are not bundled or installed automatically.
 
-- [TDD](https://github.com/intent-driven-dev/tdd-skill-evaluation-harness/tree/main/.codex/skills/tdd) — Start with a failing test and make the smallest passing change.
 - [ponytail](https://github.com/DietrichGebert/ponytail) — Keep changes focused and simple.
 - [caveman](https://github.com/JuliusBrussee/caveman) — Keep reports concise without omitting necessary facts.
 
-Check each upstream project's installation instructions, supported agents, and license. The TDD link points to a skill in an experimental Codex evaluation harness. The four AWS setup skills do not require these external development skills to be installed.
+Check each upstream project's installation instructions, supported agents, and license. The bundled AWS skills do not require these external development skills. The repository development policy additionally uses ponytail and caveman.
 
 ## Official references
 
@@ -158,6 +178,10 @@ Check each upstream project's installation instructions, supported agents, and l
 - [Claude Code Skills](https://code.claude.com/docs/en/skills)
 
 This is an unofficial community project, not an official distribution from AWS, OpenAI, or Anthropic. Official instructions may change; check the current documentation when setting up your environment.
+
+## Contributing and changes
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for focused contributions and [CHANGELOG.md](CHANGELOG.md) for changes. Unreleased entries are not version tags.
 
 ## License and sharing
 
