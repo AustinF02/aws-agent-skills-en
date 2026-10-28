@@ -12,6 +12,8 @@ User-visible changes are recorded here. Unreleased entries describe changes on t
 
 ### Added
 
+- aws-events-auth skill for AWS Builder ID event authentication, with a macOS Keychain fallback, read-only bearer requests, bounded refresh/retry, and mocked tests.
+
 - English aws-backend-tdd skill with a compact core and on-demand testing, IAM/IaC, and real-AWS references.
 - README routing example, portability and safety caveats, and contribution guidance.
 

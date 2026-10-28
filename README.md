@@ -14,6 +14,7 @@ This skillset helps when you are unsure which configuration to edit, AWS MCP wil
 | --- | --- | --- |
 | [aws-knowledge-mcp-setup](skills/aws-knowledge-mcp-setup/SKILL.md) | Connect Knowledge MCP for official documentation search | Not required |
 | [aws-login-helper](skills/aws-login-helper/SKILL.md) | Check session expiration, authenticate only when needed, and start AWS MCP | Required |
+| [aws-events-auth](skills/aws-events-auth/SKILL.md) | AWS Builder ID OAuth for event schedules, bearer headers, and expired-token recovery | Builder ID; separate from AWS CLI |
 | [aws-mcp-setup](skills/aws-mcp-setup/SKILL.md) | Connect and troubleshoot the official AWS MCP server | Required |
 | [aws-agent-toolkit-setup](skills/aws-agent-toolkit-setup/SKILL.md) | Follow AWS's official Toolkit setup and verify skills and MCP | Required |
 | [aws-backend-tdd](skills/aws-backend-tdd/SKILL.md) | Test AWS infrastructure and backend behavior using separate test tiers | Only for real-AWS verification |
@@ -94,6 +95,20 @@ Change it to raise ValueError. Keep this change at the unit tier; do not call AW
 No IAM/IaC or real-AWS reference is needed for this example. The skill loads details on demand; relative reference paths resolve from the installed skill directory. Agents need file-reading access to those supporting files. A pasted SKILL.md alone is incomplete.
 
 **This skill provides guidance, not an enforced safety control. You are responsible for operations run against your AWS account.** It does not grant permissions, sandbox commands, or guarantee safety. Check service behavior, limits, IAM actions, and regional availability against current official AWS documentation.
+
+## AWS Events schedules: separate Builder ID authentication
+
+[aws-events-auth](skills/aws-events-auth/SKILL.md) is for AWS Events API/MCP, not AWS CLI login or EventBridge. It guides native OAuth setup for Codex, Kiro, and Claude Code. The bundled fallback script supports **macOS Keychain only**; Windows/Linux users use their client's supported OAuth flow.
+
+```text
+Use aws-events-auth to set up access to my AWS Events schedule.
+Preserve existing authentication. Keep tokens local.
+Read-only: do not reserve, cancel, favorite, or change personal time.
+```
+
+The macOS helper adds the bearer header internally, refreshes an expired token, and retries once after 401. A 403 requires registration/authorization investigation. It updates Keychain records without deleting them and exposes no schedule-writing commands. See [setup and verification](skills/aws-events-auth/references/setup.md) for dependencies and commands.
+
+No credentials, token caches, Keychain exports, personal schedules, or author-specific paths are bundled. AWS's shared public OAuth client ID is intentionally included; it is not a secret. Install your own skill copy and authenticate with your own Builder ID. This addition does not migrate existing local installations automatically, and does not claim every client/version has been tested end to end.
 
 ## How the login helper works
 
