@@ -99,6 +99,8 @@ No IAM/IaC or real-AWS reference is needed for this example. The skill loads det
 
 The bundled script uses only the Python standard library. Authentication uses AWS CLI; starting MCP uses uvx and the official AWS proxy. It requires AWS CLI v2.32+ and Python 3.11+.
 
+Before contacting AWS, every mode checks AWS CLI v2.32.0+ in the v2 series and an existing `login_session` profile. SSO, other/mixed authentication settings, and any same-named section in the shared credentials file are rejected. The script reads local configuration for this check without printing values; authentication caches remain managed by AWS CLI. For first-time login and troubleshooting, follow [the onboarding guide](skills/aws-login-helper/references/onboarding.md). Existing installations must update the script to receive these checks.
+
 1. Check STS access with the selected profile without printing account IDs or ARNs.
 2. If authentication is valid, start the AWS MCP proxy without opening sign-in.
 3. If the error indicates expired authentication, start browser sign-in.

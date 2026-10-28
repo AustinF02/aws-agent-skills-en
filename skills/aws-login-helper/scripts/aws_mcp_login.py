@@ -1,5 +1,6 @@
 """Authentication checks for AWS MCP. Never prints or stores credentials. Requires Python 3.11+."""
 import argparse
+import configparser
 from contextlib import contextmanager
 import hashlib
 import json
@@ -31,6 +32,43 @@ def environment(profile, region):
     env.update(AWS_PROFILE=profile, AWS_MCP_PROXY_PROFILES=profile,
                AWS_REGION=region, AWS_DEFAULT_REGION=region, AWS_PAGER="")
     return env
+
+
+def check_prerequisites(aws, profile, region):
+    result = subprocess.run([aws, "--version"], env=environment(profile, region),
+                            capture_output=True, text=True, timeout=20)
+    version = re.search(r"aws-cli/(\d+)\.(\d+)\.(\d+)", result.stdout + result.stderr)
+    if result.returncode or not version or int(version[1]) != 2 or tuple(
+            int(part) for part in version.groups()) < (2, 32, 0):
+        raise RuntimeError("AWS CLI v2.32.0 or later in the v2 series is required. Install or update it using the official AWS CLI guide.")
+
+    config = configparser.RawConfigParser()
+    credentials = configparser.RawConfigParser()
+    try:
+        for parser, variable, filename in (
+                (config, "AWS_CONFIG_FILE", "config"),
+                (credentials, "AWS_SHARED_CREDENTIALS_FILE", "credentials")):
+            path = Path(os.environ.get(variable, str(Path.home()/".aws"/filename))).expanduser()
+            try:
+                with path.open(encoding="utf-8") as stream:
+                    parser.read_file(stream)
+            except FileNotFoundError:
+                pass
+    except (OSError, UnicodeError, configparser.Error):
+        raise RuntimeError("AWS profile configuration cannot be read safely. Check its format and file access; no sign-in was started.") from None
+
+    section = "default" if profile == "default" else "profile " + profile
+    if not config.has_section(section):
+        raise RuntimeError("The selected profile is not configured for this helper. Complete an authorized first-time named-profile sign-in before enabling automation.")
+    settings = config[section]
+    incompatible = {"role_arn", "source_profile", "credential_source", "credential_process",
+                    "web_identity_token_file", "aws_access_key_id", "aws_secret_access_key",
+                    "aws_session_token", "aws_security_token"}
+    if (incompatible.intersection(settings) or any(key.startswith("sso_") for key in settings)
+            or credentials.has_section(profile)):
+        raise RuntimeError("The selected profile has another or mixed authentication configuration. Keep its existing SSO, key, process, or role workflow; do not use this helper.")
+    if not settings.get("login_session", "").strip():
+        raise RuntimeError("The selected profile has no login_session. Complete an authorized first-time aws login for this named profile before enabling automation.")
 
 
 def check_auth(aws, profile, region):
@@ -125,6 +163,7 @@ def main():
     aws = shutil.which("aws")
     if not aws:
         raise RuntimeError("AWS CLI was not found on PATH. Set up AWS CLI v2.32 or later.")
+    check_prerequisites(aws, args.profile, args.region)
     if args.check:
         if not check_auth(aws, args.profile, args.region):
             raise RuntimeError("Your AWS session has expired. Authenticate again with --login-only.")

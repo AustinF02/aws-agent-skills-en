@@ -15,6 +15,13 @@ Explain the purpose and scope in English. Ask only for the profile name, workloa
 - Obtain approval for initial sign-in and for opening a browser automatically when the session expires. Do not repeatedly ask for approval within an already authorized scope.
 - This helper does not change IAM permissions, billing, or MFA requirements.
 
+## First-time setup and troubleshooting
+
+For initial setup or prerequisite failures, read [onboarding.md](references/onboarding.md).
+This helper requires an existing aws login profile with login_session; it does not initialize profiles.
+Every mode checks CLI version and profile compatibility before authentication.
+Keep CI/CD and other authentication workflows outside this helper.
+
 ## Bundled helper
 
 [aws_mcp_login.py](scripts/aws_mcp_login.py) requires Python 3.11+, AWS CLI v2.32+, and uvx when starting MCP. Read the script before running it. If a dependency is missing, follow its official installation instructions without removing an existing installation.

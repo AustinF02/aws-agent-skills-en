@@ -4,6 +4,12 @@ User-visible changes are recorded here. Unreleased entries describe changes on t
 
 ## Unreleased
 
+### Fixed
+
+- Enforce AWS CLI version and existing console-login profile prerequisites before any helper authentication or MCP startup.
+- Reject SSO, other/mixed authentication, and shared-credentials profile conflicts without changing configuration.
+- Add focused onboarding and troubleshooting guidance in both language editions.
+
 ### Added
 
 - English aws-backend-tdd skill with a compact core and on-demand testing, IAM/IaC, and real-AWS references.
