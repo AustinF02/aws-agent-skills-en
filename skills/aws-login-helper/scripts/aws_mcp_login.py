@@ -158,6 +158,7 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--check", action="store_true", help="Check authentication only; do not sign in or start MCP")
     mode.add_argument("--login-only", action="store_true", help="Run interactive sign-in in a terminal without starting MCP")
+    mode.add_argument("--allow-auto-login", action="store_true", help="Opt in to browser sign-in on MCP startup")
     args = parser.parse_args()
     validate(args.profile, args.region)
     aws = shutil.which("aws")
@@ -177,7 +178,10 @@ def main():
     uvx = shutil.which("uvx")
     if not uvx:
         raise RuntimeError("uvx was not found on PATH. Set up uv.")
-    ensure_auth(aws, args.profile, args.region)
+    if args.allow_auto_login:
+        ensure_auth(aws, args.profile, args.region)
+    elif not check_auth(aws, args.profile, args.region):
+        raise RuntimeError("AWS session expired. Request interactive sign-in with --login-only, then reconnect MCP.")
     os.execvpe(uvx, [uvx, "mcp-proxy-for-aws-cli@latest", ENDPOINT],
                environment(args.profile, args.region))
 

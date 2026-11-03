@@ -35,3 +35,7 @@ Verify authentication and a requested read separately from saved configuration.
 Claim MCP connection success only after tool discovery succeeds.
 Report OS/backend limitations, exact checks, and unverified app behavior.
 This skill guides behavior; it does not enforce permissions or guarantee safety.
+
+## Attendee portal fallback
+
+When a user asks for their schedule and the connector is unavailable, offer the official attendee portal for that event. For re:Invent 2026, open the [attendee login](https://registration.awsevents.com/flow/awsevents/reinvent2026/login/page/APLogin) when the user requests it. Portal sign-in is for viewing the schedule in the browser. Connector recovery uses its own Builder ID OAuth flow. If the client rejects a tool approval, retry in an approval-capable session.

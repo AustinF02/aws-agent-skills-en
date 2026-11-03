@@ -37,7 +37,8 @@ Resolve the script's actual path inside this skill. On Windows, use the installe
 
 - `--check`: Check authentication only. Do not print credentials, account IDs, or ARNs.
 - `--login-only`: Run browser sign-in from a terminal. Do not copy sensitive information into the conversation.
-- Neither flag: Start MCP immediately when authentication is valid; authenticate again when it has expired.
+- Default: Start MCP with a valid session. If it expired, stop and ask before using `--login-only`.
+- `--allow-auto-login`: Enable startup reauthentication only with explicit opt-in.
 - Stop without opening sign-in for network failures or errors that cannot be classified as expired authentication.
 - GUI launches on macOS open Terminal. GUI launches on Windows/Linux instruct the user to authenticate in a terminal. Headless authentication is out of scope.
 - A lock coordinates simultaneous starts for the same profile. The wait is normally limited to 3 minutes. If authentication takes longer, finish it and reconnect the MCP server.
