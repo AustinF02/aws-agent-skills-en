@@ -42,12 +42,12 @@ Preserve my existing authentication method, MCP settings, skills, and project ru
 Explain any required authentication steps before proceeding.
 ```
 
-To add sign-in automation:
+For AWS access on request:
 
 ```text
-Use aws-login-helper to check authentication when AWS MCP starts.
-Start immediately if the session is valid. Authenticate again only if it has expired.
-First check my OS and profile, then explain what can be automated in my environment.
+Use aws-login-helper only for explicit sign-in or tasks that require live AWS access.
+Keep AWS MCP disabled at startup where the client supports it. Reuse a valid session.
+Ask before opening browser sign-in when authentication is needed.
 ```
 
 If the agent cannot read GitHub, download the relevant skill folder and install it manually. Providing a URL does not, by itself, mean a skill has been installed.
@@ -118,7 +118,7 @@ Before contacting AWS, every mode checks AWS CLI v2.32.0+ in the v2 series and a
 
 1. Check STS access with the selected profile without printing account IDs or ARNs.
 2. If authentication is valid, start the AWS MCP proxy without opening sign-in.
-3. If the error indicates expired authentication, start browser sign-in.
+3. If the session expired, stop and direct the user to explicit sign-in. Automatic startup sign-in requires prior consent and `--allow-auto-login`.
 4. For network errors or unclassified failures, stop instead of opening sign-in.
 5. Coordinate simultaneous starts for the same profile with a lock.
 

@@ -8,7 +8,7 @@ Read this for initial setup or a failed prerequisite. Do not run login merely be
 2. Keep IAM Identity Center on `aws sso login`. Preserve static keys, credential_process, and assumed-role workflows. Do not register this helper for those profiles.
 3. For a new console-login workflow, explain the browser/MFA step and obtain approval. Run `aws login --profile <PROFILE_NAME> --region <REGION>` in the user's local terminal, using their chosen non-secret values. Use a separate named profile when preserving an existing method. Never silently choose or overwrite the default profile.
 4. The helper requires an existing nonempty `login_session`. It rejects other/mixed authentication options and any same-named profile section in the shared credentials file, even an empty section. Do not delete or rewrite existing settings to bypass this check; select a dedicated compatible profile.
-5. Run the helper's `--check` with that profile. Obtain authorization for later automatic browser sign-in on expiration, then configure MCP. Do not report connection success until MCP tool discovery succeeds.
+5. Run `--check` and configure MCP with the default arguments. Add `--allow-auto-login` only if the user explicitly opts into startup reauthentication. Verify tool discovery before reporting a connection.
 
 The script reads configuration files locally, including the shared credentials file, to check profile compatibility. It does not print their contents or read authentication caches. Custom `AWS_CONFIG_FILE` and `AWS_SHARED_CREDENTIALS_FILE` paths are honored by the prerequisite check; keep the launch environment consistent.
 
