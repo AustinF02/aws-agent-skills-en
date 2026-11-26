@@ -4,7 +4,7 @@
 
 This skillset helps when you are unsure which configuration to edit, AWS MCP will not connect, or an expired login interrupts your work. It checks your existing setup before making changes and uses your own AWS account. It does not include the author's credentials or machine configuration.
 
-**English** | [日本語](README.ja.md) · [Validation workflow](https://github.com/AustinF02/aws-agent-skills-en/actions/workflows/validate.yml)
+**English** | [日本語](README.ja.md) · [Validation workflow](https://github.com/AustinF02/aws-agent-skills/actions/workflows/validate.yml)
 
 > This repository distributes Agent Skills. It is not a one-click marketplace plugin. “Claude” means **Claude Code** here; Claude Desktop and ordinary browser chats are not covered.
 
@@ -27,7 +27,7 @@ Ask your agent:
 
 ```text
 Read the README and relevant skill in:
-https://github.com/AustinF02/aws-agent-skills-en
+https://github.com/AustinF02/aws-agent-skills
 
 Install aws-knowledge-mcp-setup for my agent and verify the connection.
 Preserve my existing configuration. Explain the scope and proposed changes first.
@@ -68,7 +68,7 @@ If Codex's built-in skill-installer is available, ask it to install the desired 
 
 In Kiro, open **Agent Steering & Skills**, select **Import a skill**, and provide a skill-folder URL, such as:
 
-https://github.com/AustinF02/aws-agent-skills-en/tree/main/skills/aws-knowledge-mcp-setup
+https://github.com/AustinF02/aws-agent-skills/tree/main/skills/aws-knowledge-mcp-setup
 
 Use the skill-folder URL, not the repository root.
 

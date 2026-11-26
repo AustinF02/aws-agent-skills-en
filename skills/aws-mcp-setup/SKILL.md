@@ -42,7 +42,7 @@ For Kiro, set the corresponding command/args/env fields under `mcpServers.aws-mc
 
 ## Automate sign-in only when requested
 
-Explain that a browser will open when authentication is needed, then read the available `aws-login-helper` skill. If it is missing, offer the [login helper skill](https://github.com/AustinF02/aws-agent-skills-en/tree/main/skills/aws-login-helper). It supports one profile and must not silently replace a multi-profile configuration.
+Explain that a browser will open when authentication is needed, then read the available `aws-login-helper` skill. If it is missing, offer the [login helper skill](https://github.com/AustinF02/aws-agent-skills/tree/main/skills/aws-login-helper). It supports one profile and must not silently replace a multi-profile configuration.
 
 ## Verification and failures
 

@@ -6,7 +6,7 @@
 
 「どの設定ファイルを直すのか分からない」「AWS MCPだけ接続できない」「ログインが切れるたびに困る」ときに、既存設定を確認しながら導入と切り分けを進めます。利用者自身のAWSアカウントを使い、作者の認証情報・端末の設定は含めません。
 
-[検証ワークフロー](https://github.com/AustinF02/aws-agent-skills-en/actions/workflows/validate.yml)
+[検証ワークフロー](https://github.com/AustinF02/aws-agent-skills/actions/workflows/validate.yml)
 
 > このリポジトリはAgent Skills形式のスキル集です。マーケットプレイスのワンクリック導入プラグインではありません。Claudeは **Claude Code** を対象とし、Claude Desktopや通常のWebチャットへの対応は保証しません。公開前の非公開状態では、他の利用者はアクセスできません。
 
@@ -28,7 +28,7 @@ Knowledge MCPの接続だけなら、AWSアカウントやAWS CLIの準備から
 利用するエージェントへ、次のように依頼してください。
 
 ```text
-https://github.com/AustinF02/aws-agent-skills-en のREADMEと対象スキルを読んでください。
+https://github.com/AustinF02/aws-agent-skills のREADMEと対象スキルを読んでください。
 まず aws-knowledge-mcp-setup を私の環境へ導入し、日本語で接続を確認してください。
 既存設定は保持し、変更前に対象と差分を説明してください。
 ```
@@ -70,7 +70,7 @@ Codexは標準のskill-installerが利用できる場合、リポジトリURLと
 
 Kiroは「Agent Steering & Skills」から「Import a skill」を選び、例えば次の **スキルフォルダのURL** を指定します。リポジトリルートのURLではありません。
 
-https://github.com/AustinF02/aws-agent-skills-en/tree/main/skills/aws-knowledge-mcp-setup
+https://github.com/AustinF02/aws-agent-skills/tree/main/skills/aws-knowledge-mcp-setup
 
 Claude Codeではスキルフォルダを上記へ配置し、新しいセッションで `/aws-knowledge-mcp-setup` などを使います。Codexでは `$aws-knowledge-mcp-setup`、Kiroではスキル選択か自然文で依頼できます。
 
