@@ -1,9 +1,19 @@
 ---
 name: aws-mcp-setup
-description: Connect the official AWS MCP server to Codex, Kiro, or Claude Code using an existing named profile, then verify authentication and tool discovery. Explain the setup in English without changing AWS resources or IAM permissions.
+description: Connect the official AWS MCP server to Codex, Kiro, or Claude Code using an existing named profile, then verify authentication and tool discovery. Explain the setup in the user’s preferred language without changing AWS resources or IAM permissions.
 ---
 
 # Set Up and Connect AWS MCP
+
+## Language / 言語
+
+Follow the user's explicit language preference; otherwise use the language of their request.
+Support English and Japanese without reinstalling or changing skill names. A language change
+changes explanations, not authentication, permissions, commands, or configuration.
+For Japanese guidance, read [日本語ガイド](references/guide.ja.md) when needed.
+The instructions in this SKILL.md remain authoritative; translated guides are supporting references.
+Bundled CLI diagnostics currently use English; explain them in the user's language without exposing secrets.
+
 
 Confirm the agent, operating system, profile name, workload Region, and existing authentication method. Never request credentials. Explain any required initial browser sign-in and obtain authorization.
 
@@ -43,3 +53,4 @@ Explain that a browser will open when authentication is needed, then read the av
 5. Do not automatically grant AdministratorAccess or wildcard permissions. After two unsuccessful repair attempts, report the evidence and the next checks.
 
 References: [AWS MCP Proxy](https://github.com/aws/mcp-proxy-for-aws), [Codex MCP](https://developers.openai.com/codex/mcp), [Kiro MCP](https://kiro.dev/docs/mcp/configuration/), [Claude Code MCP](https://code.claude.com/docs/en/mcp).
+

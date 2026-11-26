@@ -19,9 +19,13 @@ User-visible changes are recorded here. Unreleased entries describe changes on t
 
 ### Changed
 
+- Consolidate Japanese and English editions into six bilingual skills with one implementation and CI suite, linked READMEs, Japanese guides, and migration guidance.
+
+
 - Development policy selects aws-backend-tdd for AWS infrastructure and backend behavior.
-- Package checks now expect five discoverable skills.
+- The consolidated package contains six discoverable skills.
 
 ### Removed
 
 - Previous external TDD recommendation from the README; ponytail and caveman remain links only.
+

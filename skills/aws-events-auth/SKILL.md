@@ -5,6 +5,16 @@ description: Set up AWS Events API and MCP authentication with AWS Builder ID, d
 
 # AWS Events Authentication
 
+## Language / 言語
+
+Follow the user's explicit language preference; otherwise use the language of their request.
+Support English and Japanese without reinstalling or changing skill names. A language change
+changes explanations, not authentication, permissions, commands, or configuration.
+For Japanese guidance, read [日本語ガイド](references/guide.ja.md) when needed.
+The instructions in this SKILL.md remain authoritative; translated guides are supporting references.
+Bundled CLI diagnostics currently use English; explain them in the user's language without exposing secrets.
+
+
 Use AWS Builder ID OAuth for AWS Events, not aws login, IAM keys, or EventBridge.
 Public event listings may need no authentication; registered-event catalogs and personal schedules do.
 
@@ -39,3 +49,4 @@ This skill guides behavior; it does not enforce permissions or guarantee safety.
 ## Attendee portal fallback
 
 When a user asks for their schedule and the connector is unavailable, offer the official attendee portal for that event. For re:Invent 2026, open the [attendee login](https://registration.awsevents.com/flow/awsevents/reinvent2026/login/page/APLogin) when the user requests it. Portal sign-in is for viewing the schedule in the browser. Connector recovery uses its own Builder ID OAuth flow. If the client rejects a tool approval, retry in an approval-capable session.
+
