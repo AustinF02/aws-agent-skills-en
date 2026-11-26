@@ -5,6 +5,16 @@ description: Use behavior-first tests for AWS infrastructure and backend changes
 
 # AWS Backend TDD
 
+## Language / 言語
+
+Follow the user's explicit language preference; otherwise use the language of their request.
+Support English and Japanese without reinstalling or changing skill names. A language change
+changes explanations, not authentication, permissions, commands, or configuration.
+For Japanese guidance, read [日本語ガイド](references/guide.ja.md) when needed.
+The instructions in this SKILL.md remain authoritative; translated guides are supporting references.
+Bundled CLI diagnostics currently use English; explain them in the user's language without exposing secrets.
+
+
 ## Principles
 
 - Catch realistic bugs; do not optimize for test counts.
@@ -68,3 +78,4 @@ Report status, files, tier-specific commands/results, RED/GREEN evidence,
 unverified behavior, risks, and next steps.
 For real AWS, include cleanup verification and remaining resources.
 Distinguish configuration saved, local success, deployment success, and live behavior.
+

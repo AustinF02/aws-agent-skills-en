@@ -1,11 +1,21 @@
 ---
 name: aws-login-helper
-description: Check an existing AWS CLI profile, authenticate again only when its session has expired, and start AWS MCP. Explain the workflow in English. Do not migrate SSO or change authentication methods.
+description: Check an existing AWS CLI profile, authenticate again only when its session has expired, and start AWS MCP. Explain the workflow in the user’s preferred language. Do not migrate SSO or change authentication methods.
 ---
 
 # AWS Login Helper
 
-Explain the purpose and scope in English. Ask only for the profile name, workload Region, operating system, and agent. Never ask for credentials or access to someone else's AWS account.
+## Language / 言語
+
+Follow the user's explicit language preference; otherwise use the language of their request.
+Support English and Japanese without reinstalling or changing skill names. A language change
+changes explanations, not authentication, permissions, commands, or configuration.
+For Japanese guidance, read [日本語ガイド](references/guide.ja.md) when needed.
+The instructions in this SKILL.md remain authoritative; translated guides are supporting references.
+Bundled CLI diagnostics currently use English; explain them in the user's language without exposing secrets.
+
+
+Explain the purpose and scope in the user’s preferred language. Ask only for the profile name, workload Region, operating system, and agent. Never ask for credentials or access to someone else's AWS account.
 
 ## Preserve the existing setup
 
@@ -55,3 +65,4 @@ For startup, allow `startup_timeout_sec = 240` in Codex. For Kiro, confirm the c
 Report a verified connection only after tools/list succeeds. Distinguish configuration saved, authentication passed, MCP initialized, and use inside the actual app.
 
 References: [AWS login](https://docs.aws.amazon.com/cli/latest/reference/login/), [AWS MCP Proxy](https://github.com/aws/mcp-proxy-for-aws).
+

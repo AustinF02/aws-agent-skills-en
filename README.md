@@ -1,10 +1,10 @@
-# AWS Agent Skills — English
+# AWS Agent Skills
 
 **Set up AWS authentication, MCP connections, and Agent Toolkit, and develop AWS backends with behavior-first tests in Codex, Kiro, or Claude Code.**
 
 This skillset helps when you are unsure which configuration to edit, AWS MCP will not connect, or an expired login interrupts your work. It checks your existing setup before making changes and uses your own AWS account. It does not include the author's credentials or machine configuration.
 
-[Japanese edition](https://github.com/AustinF02/aws-agent-skills-ja) · [Validation workflow](https://github.com/AustinF02/aws-agent-skills-en/actions/workflows/validate.yml)
+**English** | [日本語](README.ja.md) · [Validation workflow](https://github.com/AustinF02/aws-agent-skills-en/actions/workflows/validate.yml)
 
 > This repository distributes Agent Skills. It is not a one-click marketplace plugin. “Claude” means **Claude Code** here; Claude Desktop and ordinary browser chats are not covered.
 
@@ -62,7 +62,7 @@ Copy each `skills/<skill-name>/` directory, including its supporting files, to y
 | Kiro | `~/.kiro/skills/<skill-name>/` |
 | Claude Code | `~/.claude/skills/<skill-name>/` |
 
-**Choose one language edition per agent.** The English and Japanese editions use the same skill names. Installing both in the same scope can create duplicate or conflicting entries.
+**Install each skill once.** The same skills support English and Japanese. Ask “Respond in Japanese” or “Respond in English” to switch; otherwise the agent follows your request’s language. README language links change the documentation view only. Bundled CLI diagnostics currently use English. See [migration guidance](MIGRATION.md) if you installed either previous edition.
 
 If Codex's built-in skill-installer is available, ask it to install the desired paths from this repository. Confirm the installation location supported by your version.
 
@@ -167,7 +167,7 @@ These tests do **not** verify real browser/MFA flows, macOS Terminal permissions
 python -m unittest discover -s tests -v
 ```
 
-The setup skills translate the [original Japanese source](https://github.com/AustinF02/aws-agent-skills-ja/tree/86c909dc63916ae1a45f58ae244fc64fc0c0bce7); aws-backend-tdd adapts the [Japanese TDD edition](https://github.com/AustinF02/aws-agent-skills-ja/tree/cea1c82be73dca543d312d36b2a6f85a3c45fb7e/skills/aws-backend-tdd). The launcher logic is preserved; user-facing messages and instructions use English. The Japanese repository retains the original test-first failure and subsequent passing runs. This repository records regression checks for the English edition.
+This repository consolidates the English and Japanese editions into one set of six skills, shared scripts, tests, and CI. Japanese guides live alongside each skill. Original sources and migration details are recorded in [MIGRATION.md](MIGRATION.md).
 
 ## Development guidelines
 
@@ -205,3 +205,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for focused contributions and [CHANGELOG.
 Code and documentation created in this repository are available under the [MIT License](LICENSE). Linked external skills and official documentation remain subject to their own terms.
 
 If this helps you, consider giving the repository a star. For bug reports, include your OS, agent and version, reproduction steps, and a sanitized error summary. Do not post credentials, AWS account IDs, ARNs, email addresses, or browser authentication URLs.
+

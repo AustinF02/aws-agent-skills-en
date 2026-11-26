@@ -1,9 +1,19 @@
 ---
 name: aws-knowledge-mcp-setup
-description: Connect AWS Knowledge MCP to Codex, Kiro, or Claude Code and verify official documentation search. Explain the setup in English. Do not sign in to AWS or operate account resources.
+description: Connect AWS Knowledge MCP to Codex, Kiro, or Claude Code and verify official documentation search. Explain the setup in the user’s preferred language. Do not sign in to AWS or operate account resources.
 ---
 
 # Connect AWS Knowledge MCP
+
+## Language / 言語
+
+Follow the user's explicit language preference; otherwise use the language of their request.
+Support English and Japanese without reinstalling or changing skill names. A language change
+changes explanations, not authentication, permissions, commands, or configuration.
+For Japanese guidance, read [日本語ガイド](references/guide.ja.md) when needed.
+The instructions in this SKILL.md remain authoritative; translated guides are supporting references.
+Bundled CLI diagnostics currently use English; explain them in the user's language without exposing secrets.
+
 
 The official endpoint is `https://knowledge-mcp.global.api.aws`. It requires no AWS authentication and is rate-limited. It is separate from AWS MCP, which can operate AWS resources.
 
@@ -40,3 +50,4 @@ claude mcp add --transport http --scope user aws-knowledge-mcp-server https://kn
 6. Report configuration saved separately from search verified. If prompted for credentials, do not enter AWS keys; check the endpoint and client requirements instead.
 
 References: [AWS Knowledge MCP](https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server), [Codex MCP](https://developers.openai.com/codex/mcp), [Kiro MCP](https://kiro.dev/docs/mcp/configuration/), [Claude Code MCP](https://code.claude.com/docs/en/mcp).
+

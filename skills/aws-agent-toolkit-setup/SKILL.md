@@ -1,11 +1,21 @@
 ---
 name: aws-agent-toolkit-setup
-description: Follow AWS's official setup.md to install Agent Toolkit while preserving existing configuration, then check authentication, skills, and MCP for Codex, Kiro, or Claude Code. Explain the workflow in English.
+description: Follow AWS's official setup.md to install Agent Toolkit while preserving existing configuration, then check authentication, skills, and MCP for Codex, Kiro, or Claude Code. Explain the workflow in the user’s preferred language.
 ---
 
 # Set Up Agent Toolkit for AWS
 
-At the start, fetch and read the full [official AWS setup.md](https://raw.githubusercontent.com/aws/agent-toolkit-for-aws/refs/heads/main/setup-instructions/setup.md). Do not execute remembered commands without checking the current instructions. This skill adds English guidance and safeguards for existing environments; it does not copy the official runbook.
+## Language / 言語
+
+Follow the user's explicit language preference; otherwise use the language of their request.
+Support English and Japanese without reinstalling or changing skill names. A language change
+changes explanations, not authentication, permissions, commands, or configuration.
+For Japanese guidance, read [日本語ガイド](references/guide.ja.md) when needed.
+The instructions in this SKILL.md remain authoritative; translated guides are supporting references.
+Bundled CLI diagnostics currently use English; explain them in the user's language without exposing secrets.
+
+
+At the start, fetch and read the full [official AWS setup.md](https://raw.githubusercontent.com/aws/agent-toolkit-for-aws/refs/heads/main/setup-instructions/setup.md). Do not execute remembered commands without checking the current instructions. This skill adds bilingual guidance and safeguards for existing environments; it does not copy the official runbook.
 
 ## Inputs and boundaries
 
@@ -33,3 +43,4 @@ Fetch the skill catalog with the chosen profile. Verify the installation paths a
 On failure, read the matching section in the [official troubleshooting guide](https://raw.githubusercontent.com/aws/agent-toolkit-for-aws/refs/heads/main/setup-instructions/setup-troubleshooting.md). Do not retry indefinitely.
 
 The runbook's final example about creating and deploying a game is a separate task, not part of setup.
+
