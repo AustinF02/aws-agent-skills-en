@@ -20,7 +20,7 @@ CLI diagnostics remain English. The legacy `aws-agent-skills-ja` lock-cache dire
 ## Provenance
 
 - English source: [70b7ae7](https://github.com/AustinF02/aws-agent-skills/tree/70b7ae7db6b68a35de7f1589191e0aaf8230904e).
-- Japanese source: [197b254](https://github.com/AustinF02/aws-agent-skills-ja/tree/197b25466672008b65b2b460850596d5b793b6d3).
+- Japanese source revision: `197b25466672008b65b2b460850596d5b793b6d3` (former `aws-agent-skills-ja` repository). The Japanese guides are available in this repository.
 - Tests and event-auth code are identical at those revisions. Login-helper differences are translated text/comments; shared code retains English diagnostics. CI differs only in its displayed name.
 - Japanese skill text and reference guides are preserved as supporting `.ja.md` documents. Each skill has one authoritative `SKILL.md`, one implementation, and one shared test suite.
 - The Japanese guides are included in the consolidated repository.
